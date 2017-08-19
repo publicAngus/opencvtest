@@ -1,16 +1,15 @@
 #include <iostream>
 #include <cstdio>
 #include <string>
-
+#include "./src/ns_test/Debute.hpp"
+#include "./src/ns_test/Hodor.hpp"
 using namespace std;
 int main(int i,char* args[]){
-    std::cout<< "helloworld";
-    std::cout<< std::endl;
-    
-    string str = "im heloo 2";
 
-    std::cout << str;
-    std::cout<< std::endl;
+    ns_test::writeline();
+
+    ns_test::Hodor hdr = ns_test::Hodor();
+    std::cout << hdr.GetAge();
 
     std::getchar();
 }

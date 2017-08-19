@@ -15,6 +15,18 @@
             "problemMatcher": [
                 "$gcc"
             ]
+        },
+        {
+            "taskName": "buildTest",
+            "command": "make",
+            "type": "shell",
+            "args": [
+                "ns_test"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }

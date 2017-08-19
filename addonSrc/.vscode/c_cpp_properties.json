@@ -27,6 +27,7 @@
                 "/usr/local/include",
                 "/usr/include/x86_64-linux-gnu",
                 "/usr/include",
+                "/usr/include/linux",
                 "/opt/node/include/node",
                 "${workspaceRoot}"
             ],
@@ -39,6 +40,7 @@
                     "/usr/local/include",
                     "/usr/include/x86_64-linux-gnu",
                     "/usr/include",
+                    "/usr/include/linux",
                     "/opt/node/include/node",
                     "${workspaceRoot}"
                 ],
