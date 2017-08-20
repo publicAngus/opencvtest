@@ -21,6 +21,7 @@
             "command": "make",
             "type": "shell",
             "args": [
+                "clean",
                 "ns_test"
             ],
             "group": {
