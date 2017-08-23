@@ -113,7 +113,8 @@ LDFLAGS_Release := \
 	-rdynamic \
 	-m64
 
-LIBS :=
+LIBS := \
+	../lib/ns_test.a
 
 $(obj).target/addon.node: GYP_LDFLAGS := $(LDFLAGS_$(BUILDTYPE))
 $(obj).target/addon.node: LIBS := $(LIBS)

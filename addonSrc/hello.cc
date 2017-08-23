@@ -1,6 +1,7 @@
 #include <node.h>
 #include <iostream>
 #include <string>
+#include "./src/ns_test/Hodor.hpp"
 
 namespace demo {
 using v8::FunctionCallbackInfo;
@@ -17,10 +18,14 @@ using namespace std;
 void Method(const FunctionCallbackInfo<Value>& args){
 
     int arr[2]{8,19};
-	std::string str= "hello 熱門";
+	std::string str= "";
 	for(int i : arr){
 		str+= std::to_string(i);
 	}
+
+	str = "Hodor is of age : ";
+	ns_test::Hodor hdr = ns_test::Hodor(1985);
+	str += std::to_string(hdr.GetAge());
 
 	string test;
 	//cin >> test;

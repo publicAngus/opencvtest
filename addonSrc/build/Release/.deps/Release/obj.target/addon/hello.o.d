@@ -4,10 +4,12 @@ Release/obj.target/addon/hello.o: ../hello.cc \
  /home/angus/.node-gyp/4.6.1/include/node/v8.h \
  /home/angus/.node-gyp/4.6.1/include/node/v8-version.h \
  /home/angus/.node-gyp/4.6.1/include/node/v8config.h \
- /home/angus/.node-gyp/4.6.1/include/node/node_version.h
+ /home/angus/.node-gyp/4.6.1/include/node/node_version.h \
+ .././src/ns_test/Hodor.hpp
 ../hello.cc:
 /home/angus/.node-gyp/4.6.1/include/node/node.h:
 /home/angus/.node-gyp/4.6.1/include/node/v8.h:
 /home/angus/.node-gyp/4.6.1/include/node/v8-version.h:
 /home/angus/.node-gyp/4.6.1/include/node/v8config.h:
 /home/angus/.node-gyp/4.6.1/include/node/node_version.h:
+.././src/ns_test/Hodor.hpp:

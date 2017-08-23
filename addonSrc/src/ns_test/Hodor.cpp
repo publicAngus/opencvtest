@@ -28,6 +28,6 @@ namespace ns_test{
     }
 
     int Hodor::GetAge() const{
-        return thisYear - bornYr;
+        return thisYear - bornYr + 100;
     }
 }
