@@ -18,7 +18,7 @@ using namespace std;
 void Method(const FunctionCallbackInfo<Value>& args){
 
     int arr[2]{8,19};
-	std::string str= "";
+	std::string str= "--";
 	for(int i : arr){
 		str+= std::to_string(i);
 	}

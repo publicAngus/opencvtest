@@ -34,10 +34,10 @@ CFLAGS_CC_Debug := \
 	-std=gnu++0x
 
 INCS_Debug := \
-	-I/home/angus/.node-gyp/4.6.1/include/node \
-	-I/home/angus/.node-gyp/4.6.1/src \
-	-I/home/angus/.node-gyp/4.6.1/deps/uv/include \
-	-I/home/angus/.node-gyp/4.6.1/deps/v8/include
+	-I/home/angus/.node-gyp/6.11.1/include/node \
+	-I/home/angus/.node-gyp/6.11.1/src \
+	-I/home/angus/.node-gyp/6.11.1/deps/uv/include \
+	-I/home/angus/.node-gyp/6.11.1/deps/v8/include
 
 DEFS_Release := \
 	'-DNODE_GYP_MODULE_NAME=addon' \
@@ -57,8 +57,6 @@ CFLAGS_Release := \
 	-Wno-unused-parameter \
 	-m64 \
 	-O3 \
-	-ffunction-sections \
-	-fdata-sections \
 	-fno-omit-frame-pointer
 
 # Flags passed to only C files.
@@ -71,10 +69,10 @@ CFLAGS_CC_Release := \
 	-std=gnu++0x
 
 INCS_Release := \
-	-I/home/angus/.node-gyp/4.6.1/include/node \
-	-I/home/angus/.node-gyp/4.6.1/src \
-	-I/home/angus/.node-gyp/4.6.1/deps/uv/include \
-	-I/home/angus/.node-gyp/4.6.1/deps/v8/include
+	-I/home/angus/.node-gyp/6.11.1/include/node \
+	-I/home/angus/.node-gyp/6.11.1/src \
+	-I/home/angus/.node-gyp/6.11.1/deps/uv/include \
+	-I/home/angus/.node-gyp/6.11.1/deps/v8/include
 
 OBJS := \
 	$(obj).target/$(TARGET)/hello.o

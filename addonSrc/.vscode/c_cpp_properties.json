@@ -17,7 +17,11 @@
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
-            }
+            },
+            "macFrameworkPath": [
+                "/System/Library/Frameworks",
+                "/Library/Frameworks"
+            ]
         },
         {
             "name": "Linux",
@@ -29,6 +33,7 @@
                 "/usr/include",
                 "/usr/include/linux",
                 "/opt/node/include/node",
+                "/usr/local/opencv-3.3.0/build/include",
                 "${workspaceRoot}"
             ],
             "defines": [],
@@ -42,6 +47,7 @@
                     "/usr/include",
                     "/usr/include/linux",
                     "/opt/node/include/node",
+                    "/usr/local/opencv-3.3.0/build/include",
                     "${workspaceRoot}"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
@@ -69,5 +75,5 @@
             }
         }
     ],
-    "version": 2
+    "version": 3
 }
