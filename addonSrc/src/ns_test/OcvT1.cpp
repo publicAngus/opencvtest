@@ -41,6 +41,7 @@ namespace ns_test{
         switch(Event){
             case EVENT_LBUTTONDOWN:
             {       
+                inst->_isMouseDown = true;
                 inst->_t1DownPoint = Point(x,y);
                 //Rect roi(inst->_t1DownPoint.x,inst->_t1DownPoint.y,100,100);
                 //Mat img = inst->_t1RawImg(roi);
@@ -50,17 +51,29 @@ namespace ns_test{
             break;
             case EVENT_MOUSEMOVE:
             {
-
+                if(inst->_isMouseDown){
+                Point currentPt(x,y);
+                Mat rawClone = inst->_t1RawImg.clone();
+                rectangle(rawClone,inst->_t1DownPoint,currentPt,Scalar(188));
+                imshow(inst->_t1RawWindow,rawClone);
+                }
             }
             break;
             case EVENT_LBUTTONUP:
             {
+                inst->_isMouseDown = false;
                 inst->_t1UpPoint= Point(x,y);
-                rectangle(inst->_t1RawImg,inst->_t1DownPoint,inst->_t1UpPoint,Scalar(188));
-                imshow(inst->_t1RawWindow,inst->_t1RawImg);
                 Rect roi(inst->_t1DownPoint,inst->_t1UpPoint);
                 Mat imgSelected = inst->_t1RawImg(roi);
                 imshow(inst->_t1MonWindow,imgSelected);
+
+                /*
+                Mat olay = Mat::zeros(imgSelected.rows,imgSelected.cols,CV_8UC3);
+                addWeighted(imgSelected,0.1,olay,0.9,0.0,olay);
+                imshow(inst->_t1MonWindow,olay);
+                imshow("ttt",imgSelected);
+                */
+
             }
             break;
             default:

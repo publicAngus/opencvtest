@@ -17,5 +17,6 @@ namespace ns_test{
         cv::Mat _t1RawImg;
         cv::Point _t1DownPoint;
         cv::Point _t1UpPoint;
+        bool _isMouseDown = false;
     };
 }
