@@ -51,7 +51,7 @@ int main(int i,char* args[]){
     //Ocv::DrawFrameTest();
     //Ocv::ReadPixels();
 
-    char str[] = "./imgs/bear.jpg";
+    char str[] = "./imgs/color1.bmp";
     OcvT1 t1(str);
     t1.Test();
 

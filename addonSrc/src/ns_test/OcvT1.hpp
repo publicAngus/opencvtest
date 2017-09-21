@@ -10,6 +10,7 @@ namespace ns_test{
         void SayHello();
         void Test();
         static void OnMouse(int Event,int x,int y,int flags,void* param);
+        static std::string type2str(int);        
     private:
         char*  _t1FilePath;
         char*  _t1MonWindow;
