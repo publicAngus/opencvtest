@@ -54,7 +54,7 @@ int main(int i,char* args[]){
     char str[] = "./imgs/color1.bmp";
     OcvT1 t1(str);
     t1.Test();
-
+    
 
     writeline("done testing");
     std::getchar();
