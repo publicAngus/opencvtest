@@ -4,6 +4,14 @@
 #include <vector>
 
 namespace ns_test{
+
+    void Basics::TestOperatorPole(){
+        ns_test::writeline(2|0);
+        ns_test::writeline(0|2);
+        ns_test::writeline(2|0);
+        ns_test::writeline(0|0);
+    }
+
     //answered by below link, keyword VLA(variable length array )
     //https://stackoverflow.com/questions/46011407/how-to-create-c-array-with-different-length-at-run-time/46011437#46011437
     // void Basics::TestArray(int length){
@@ -96,6 +104,15 @@ namespace ns_test{
              }
          }
 
+         //iterator
+         ns_test::writeline("by iterator:");
+         std::vector<int> ti;
+         ti.push_back(10);
+         ti.push_back(20);
+         ti.push_back(30);
+         for(std::vector<int>::iterator r= ti.begin();r!=ti.end();r++){
+            ns_test::writeline((*r));
+         }
 
     }
 

@@ -81,13 +81,14 @@ void OcvT1::Test()
     //imshow(_t1RawWindow,_t1RawImg);
     //setMouseCallback(_t1RawWindow,OnMouse,this);
 
+    /*
     CascadeClassifier faceCC, eyesCC;
     faceCC.load("./cascadeXml/haarcascade_frontalface_alt.xml");
     eyesCC.load("./cascadeXml/haarcascade_eye_tree_eyeglasses.xml");
 
     Mat lenaImg = imread("./imgs/faces.jpg");
     detectAndDraw(lenaImg, faceCC, eyesCC, 1, false);
-
+    */
     waitKey(0);
 }
 
@@ -207,6 +208,7 @@ void OcvT1::detectAndDraw(Mat &img, CascadeClassifier &cascade,
         Scalar color = colors[i % 8];
         int radius;
         double aspect_ratio = (double)r.width / r.height;
+        
         if (0.75 < aspect_ratio && aspect_ratio < 1.3)
         {
             center.x = cvRound((r.x + r.width * 0.5) * scale);

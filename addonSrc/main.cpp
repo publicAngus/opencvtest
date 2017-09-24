@@ -44,6 +44,7 @@ int main(int i,char* args[]){
     //Basics::TestFor(10);
     //Basics::TestArray(100);
     //Basics::TestVector(1);
+    //Basics::TestOperatorPole();
     //testmetods();
     //testSharePointer();
     //testopencv();
@@ -51,9 +52,11 @@ int main(int i,char* args[]){
     //Ocv::DrawFrameTest();
     //Ocv::ReadPixels();
 
-    char str[] = "./imgs/color1.bmp";
+    
+    char str[] = "./imgs/faces.jpg";
     OcvT1 t1(str);
     t1.Test();
+    
     
 
     writeline("done testing");
