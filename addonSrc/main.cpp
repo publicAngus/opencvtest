@@ -53,7 +53,7 @@ int main(int i,char* args[]){
     //Ocv::ReadPixels();
 
     
-    char str[] = "./imgs/faces.jpg";
+    char str[] = "./imgs/color2.jpg";
     OcvT1 t1(str);
     t1.Test();
     

@@ -15,6 +15,9 @@ namespace ns_test{
         static void detectAndDraw(cv::Mat& img,cv::CascadeClassifier& cascade,
             cv::CascadeClassifier& nestedCascade,
             double scale, bool tryflip );
+        void TestHistogram();
+        void TestFaceDetect();
+        void TestColorPick();
     private:
         char*  _t1FilePath;
         char*  _t1MonWindow;

@@ -1,6 +1,8 @@
 #include "OcvT1.hpp"
 #include "Debute.hpp"
 #include <string>
+#include <vector>
+
 using namespace cv;
 
 namespace ns_test
@@ -61,12 +63,10 @@ OcvT1::OcvT1(char str[])
     _t1ColorWindow = "ColorWindow";
 
     _t1MonWindow = "MonWindow";
-    namedWindow(_t1MonWindow, WINDOW_AUTOSIZE);
-    moveWindow(_t1MonWindow, 800, 0);
+  
 
     _t1RawWindow = "RawWindow";
-    namedWindow(_t1RawWindow, WINDOW_AUTOSIZE);
-    moveWindow(_t1RawWindow, 0, 0);
+   
 }
 
 void OcvT1::SayHello()
@@ -74,22 +74,77 @@ void OcvT1::SayHello()
     ns_test::writeline("Hello fucker");
 }
 
+
+
 void OcvT1::Test()
 {
     ns_test::writeline("Test Start:");
 
-    //imshow(_t1RawWindow,_t1RawImg);
-    //setMouseCallback(_t1RawWindow,OnMouse,this);
+    char playWindow[] = "PlayWindow";
+    namedWindow(playWindow,WINDOW_AUTOSIZE);
+    moveWindow(playWindow,0,0);
 
-    /*
+    Mat bgImg = Mat(500,500,CV_8UC3,Scalar(255,255,255));
+    imshow(playWindow,bgImg);
+    
+    waitKey(0);
+}
+
+void OcvT1::TestColorPick(){
+    namedWindow(_t1MonWindow, WINDOW_AUTOSIZE);
+    moveWindow(_t1MonWindow, 800, 0);
+
+    namedWindow(_t1RawWindow, WINDOW_AUTOSIZE);
+    moveWindow(_t1RawWindow, 0, 0);
+
+    imshow(_t1RawWindow,_t1RawImg);
+    setMouseCallback(_t1RawWindow,OnMouse,this);
+}
+
+void OcvT1::TestFaceDetect(){
+    
     CascadeClassifier faceCC, eyesCC;
     faceCC.load("./cascadeXml/haarcascade_frontalface_alt.xml");
     eyesCC.load("./cascadeXml/haarcascade_eye_tree_eyeglasses.xml");
 
-    Mat lenaImg = imread("./imgs/faces.jpg");
+    Mat lenaImg = imread("./imgs/leana512.png");
     detectAndDraw(lenaImg, faceCC, eyesCC, 1, false);
+    
+}
+
+void OcvT1::TestHistogram(){
+    Mat rImg = _t1RawImg;
+    std::vector<Mat> cnls;
+    split(rImg,cnls);
+    ns_test::writeline("size is:");
+    ns_test::writeline(cnls.size());
+
+    /*
+    imshow("Blue",cnls[0]);
+    imshow("Green",cnls[1]);
+    imshow("Red",cnls[2]);
     */
-    waitKey(0);
+
+    int dims = 1;
+    int histSize = 256;
+    float range[] = {0,256};
+    const float* histRange = {range};
+    Mat b_hist,g_hist,r_hist;
+    calcHist(&cnls[0],1,0,Mat(),b_hist,dims,&histSize,&histRange);
+    
+    int hist_width = 512;
+    int hist_height=256;
+    int bin_w= cvRound((double)hist_width/histSize);
+
+    Mat histo = Mat(hist_height,hist_width,CV_8UC3,Scalar(20,20,20));
+    normalize(b_hist,b_hist,0,histo.rows,NORM_MINMAX,-1, Mat());
+    for(int i=1;i<histSize;i++){
+        line(histo,
+            Point(i*bin_w, hist_height - cvRound(b_hist.at<float>(i))),
+            Point((i-1)*bin_w,hist_height - cvRound(b_hist.at<float>(i-1))),Scalar(250,0,0),2,8,0);
+    }
+
+    imshow("Histogram",histo);
 }
 
 void OcvT1::OnMouse(int Event, int x, int y, int flags, void *param)
