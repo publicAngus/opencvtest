@@ -8,5 +8,6 @@ namespace ns_test{
         static void TestWhile(int);
         static void TestFor(int);
         static void TestOperatorPole();
+        static void TestBinaryShift();
     };
 }

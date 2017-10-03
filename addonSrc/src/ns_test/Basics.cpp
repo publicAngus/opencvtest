@@ -5,6 +5,14 @@
 
 namespace ns_test{
 
+    void Basics::TestBinaryShift(){
+        unsigned int uint2 = 4;
+        while(uint2 > 0){
+            ns_test::writeline(uint2);
+            uint2 >>=1;
+        }
+    }
+
     void Basics::TestOperatorPole(){
         ns_test::writeline(2|0);
         ns_test::writeline(0|2);

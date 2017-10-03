@@ -79,14 +79,27 @@ void OcvT1::SayHello()
 void OcvT1::Test()
 {
     ns_test::writeline("Test Start:");
-
-    char playWindow[] = "PlayWindow";
-    namedWindow(playWindow,WINDOW_AUTOSIZE);
-    moveWindow(playWindow,0,0);
+    char fgWindow[] ="FGWindow";
+    char bgWindow[] = "BGWindow";
+    char mxWindow[] = "MXWindow";
+    namedWindow(bgWindow,WINDOW_AUTOSIZE);
+    moveWindow(bgWindow,0,0);
 
     Mat bgImg = Mat(500,500,CV_8UC3,Scalar(255,255,255));
-    imshow(playWindow,bgImg);
+    imshow(bgWindow,bgImg);
     
+    rectangle(bgImg,Rect(0,0,100,100),Scalar(170,170,170));
+    imshow(bgWindow,bgImg);
+
+    Mat fgImg = _t1RawImg;
+    imshow(fgWindow,fgImg);
+
+    Rect roi(0,0,100,100);
+    Mat roiImg = fgImg(roi);
+    
+    roiImg.copyTo(bgImg.rowRange(0,100).colRange(0,100));
+    imshow(mxWindow,bgImg);
+
     waitKey(0);
 }
 
