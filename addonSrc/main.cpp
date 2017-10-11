@@ -8,6 +8,7 @@
 #include "./src/ns_test/Basics.hpp"
 #include "./src/ns_test/Ocv.hpp"
 #include "./src/ns_test/OcvT1.hpp"
+#include "./src/ns_test/Algor.hpp"
 
 using namespace std;
 using namespace ns_test;
@@ -52,11 +53,13 @@ int main(int i,char* args[]){
     
     //Ocv::DrawFrameTest();
     //Ocv::ReadPixels();
-
+    //Algor::TestBubbleSort();
+    Algor::TestQuickSort();
+  
     
-    char str[] = "./imgs/color1.bmp";
-    OcvT1 t1(str);
-    t1.Test();
+    //char str[] = "./imgs/color1.bmp";
+    //OcvT1 t1(str);
+    //t1.Test();
     
     
     
