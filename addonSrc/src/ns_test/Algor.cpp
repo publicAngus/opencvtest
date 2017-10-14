@@ -16,7 +16,8 @@ namespace ns_test{
     }
 
     int Algor::_Partition(int arr[],int leftIndex,int rightIndex){
-       int partValIndex = leftIndex;
+       rightIndex++;
+        int partValIndex = leftIndex;
        int partVal = arr[leftIndex];
        int high = rightIndex;
      
@@ -43,7 +44,7 @@ namespace ns_test{
 
     }
     void Algor::TestQuickSort(){
-        int arr[] = {5,3,4,9,8};
+        int arr[] = {5,3,4,9,8,0,1,2,100,4,7};
         int length = sizeof(arr)/sizeof(int);
         std::cout<<"array length == "<< length << std::endl;
         //int partIndex =  _Partition(arr,0,length -1);
