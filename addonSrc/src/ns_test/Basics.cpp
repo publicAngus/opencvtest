@@ -5,6 +5,10 @@
 
 namespace ns_test{
 
+    bool Basics::operator==(Basics const& bs){
+        return true;
+    }
+
     void Basics::TestBinaryShift(){
         unsigned int uint2 = 4;
         while(uint2 > 0){

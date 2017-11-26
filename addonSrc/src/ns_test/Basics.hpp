@@ -9,5 +9,6 @@ namespace ns_test{
         static void TestFor(int);
         static void TestOperatorPole();
         static void TestBinaryShift();
+        bool operator==(Basics const& bs);
     };
 }

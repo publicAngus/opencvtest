@@ -9,11 +9,14 @@
 #include "./src/ns_test/Ocv.hpp"
 #include "./src/ns_test/OcvT1.hpp"
 #include "./src/ns_test/Algor.hpp"
+#include "./src/ns_test/BiNode.hpp"
 
 using namespace std;
 using namespace ns_test;
 
 using namespace cv;
+
+#define macroTest(p)(p*p*99)
 
 ns_test::Hodor getTrueHodor(){
     return ns_test::Hodor(1990);
@@ -40,6 +43,10 @@ void testSharePointer(){
 
 
 int main(int i,char* args[]){
+    
+    BiNode<int> bn(10);
+    std::cout << bn.val <<std::endl;
+    
     //testmetods(); 
     //Basics::TestWhile(10);
     //Basics::TestFor(10);
@@ -50,11 +57,28 @@ int main(int i,char* args[]){
     //testmetods();
     //testSharePointer();
     //testopencv();
-    
+
+    /*
+    typedef int* intPtr;
+    int ii = 1001;
+    intPtr ptr = &ii;
+    std::cout << *ptr <<std::endl;
+
+    int q = 10;
+    int qRet = macroTest(q);
+    std::cout << qRet << std::endl;
+
+    Basics bsc;
+    Basics bsc2;
+
+    bool ret = bsc ==bsc2;
+    std::cout << ret << std::endl;
+    */
+
     //Ocv::DrawFrameTest();
     //Ocv::ReadPixels();
     //Algor::TestBubbleSort();
-    Algor::TestQuickSort();
+    //Algor::TestQuickSort();
   
     
     //char str[] = "./imgs/color1.bmp";
