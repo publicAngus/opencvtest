@@ -43,10 +43,25 @@ void testSharePointer(){
 
 
 int main(int i,char* args[]){
-    
+    Algor::TestBinarySearch();
+
+    //int arr[] = {1,2,3};
+    //int length = sizeof(arr)/sizeof(int);
+    //ns_test::writeline(length);
+    //ns_test::writeline(sizeof(arr));
+    //ns_test::writeline(sizeof(int));
+    /*
     BiNode<int> bn(10);
-    std::cout << bn.val <<std::endl;
-    
+    std::cout << bn.Data <<std::endl;
+
+    BiNode<int>* lcPtr = bn.InsertLC(20);
+    std::cout << lcPtr->Data << std::endl;
+
+    BiNode<int>* rcPtr = bn.InsertRC(30);
+    std::cout << rcPtr->Data << std::endl;
+    */
+
+
     //testmetods(); 
     //Basics::TestWhile(10);
     //Basics::TestFor(10);

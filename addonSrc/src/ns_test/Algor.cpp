@@ -1,7 +1,38 @@
 #include "Debute.hpp"
 #include "Algor.hpp"
+#include <cmath>
 
 namespace ns_test{
+    void Algor::TestBinarySearch(){
+        int arr[] = {2,3,4,5,6};
+        int length = sizeof(arr)/sizeof(int);
+        int index = _BinSearch(arr,length,6);
+        std::cout << "result index:"<< index << std::endl;
+    }
+
+    int Algor::_BinSearch(int arr[],int length, int target){
+        int low,high,mid,midVal;
+        low = 0; 
+        high = length;
+        std::cout << low << "," << high <<";" << std::endl;
+        while(low<high){
+            mid = std::floor(high + low)/2;
+            midVal = arr[mid];
+            std::cout << low << "l,"<< mid <<"m,"<< high <<"h," <<midVal <<"mv,"<< target << std::endl;
+            if(midVal==target){
+                return mid;
+            }else{
+                if(target < midVal){
+                    high = mid;
+                }else{
+                    low = mid+1;
+                }
+            }
+        }
+     
+        return -1;
+    }
+
     void Algor::_Exchange(int arr[],int a,int b){
         int tmp = arr[a];
         arr[a] = arr[b];
