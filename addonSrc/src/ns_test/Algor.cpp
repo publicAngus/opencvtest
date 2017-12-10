@@ -4,9 +4,9 @@
 
 namespace ns_test{
     void Algor::TestBinarySearch(){
-        int arr[] = {2,3,4,5,6};
+        int arr[] = {1,2,3,4,7,8,8,8,8,8};
         int length = sizeof(arr)/sizeof(int);
-        int index = _BinSearch(arr,length,6);
+        int index = _BinSearch(arr,length,8);
         std::cout << "result index:"<< index << std::endl;
     }
 

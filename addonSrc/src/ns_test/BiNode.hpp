@@ -3,7 +3,7 @@ namespace ns_test{
 
     template<typename T> struct BiNode{
     public:
-        BiNodePos(T) Parent; BiNodePos(T) Lc; BiNodePos(T) Rc;
+        BiNodePos(T) Parent; BiNodePos(T) Lc= NULL; BiNodePos(T) Rc= NULL;
         T Data;
         BiNode(T data,BiNodePos(T) parent = NULL){
           Data = data;

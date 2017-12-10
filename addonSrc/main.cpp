@@ -10,6 +10,7 @@
 #include "./src/ns_test/OcvT1.hpp"
 #include "./src/ns_test/Algor.hpp"
 #include "./src/ns_test/BiNode.hpp"
+#include "./src/ns_test/BiNodeDraw.hpp"
 
 using namespace std;
 using namespace ns_test;
@@ -41,9 +42,45 @@ void testSharePointer(){
 }
 
 
+void paintNode(BiNode<int> *bnPtr){
+    
+    if(!bnPtr) return;
+
+    BiNode<int> bn = *bnPtr;
+    std::cout << "bnVal:" << bn.Data << std::endl;
+    if(bn.Lc){
+    std::cout<< "LcVal:" << bn.Lc->Data << std::endl;
+    }
+    if(bn.Rc){
+    std::cout<< "RcVal:" << bn.Rc->Data << std::endl;
+    }
+}
 
 int main(int i,char* args[]){
-    Algor::TestBinarySearch();
+   
+   
+   std::vector<BiNode<int>*> nodes;
+   for(int i=0;i< 10;i++){
+        BiNode<int>* bnd = new BiNode<int>(i);
+        nodes.push_back(bnd);
+
+        bnd->InsertLC(i*100+1);
+        bnd->InsertRC(i*100+2);
+
+        //this is problematic,all become the last one
+        //BiNode<int> bnd(i);
+        //nodes.push_back(&bnd);
+
+   }
+  
+   for(std::vector<BiNode<int>*>::iterator it= nodes.begin(); it!=nodes.end();it++){
+       paintNode(*it);
+   }
+
+
+   BiNodeDraw bnd("helloworld");
+
+    //std::cout<< bn.Lc->Data << bn.Rc->Data << std::endl;
 
     //int arr[] = {1,2,3};
     //int length = sizeof(arr)/sizeof(int);
@@ -94,6 +131,7 @@ int main(int i,char* args[]){
     //Ocv::ReadPixels();
     //Algor::TestBubbleSort();
     //Algor::TestQuickSort();
+    //Algor::TestBinarySearch();
   
     
     //char str[] = "./imgs/color1.bmp";
