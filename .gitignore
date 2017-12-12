@@ -2,3 +2,5 @@
 addonSrc/node_modules
 #ignore obj folder
 addonSrc/obj
+#ignore lib folder
+addonSrc/lib

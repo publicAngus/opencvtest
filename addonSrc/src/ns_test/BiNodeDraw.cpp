@@ -14,7 +14,7 @@ namespace ns_test{
     }
 
     void BiNodeDraw::DrawNode(Point parentPos){
-        
+        //
     }
 
 

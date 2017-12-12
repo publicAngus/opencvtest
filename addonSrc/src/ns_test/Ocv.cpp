@@ -21,7 +21,7 @@ namespace ns_test{
         ns_test::writeline(horiD);
         ns_test::writeline(vertD);
 
-        //show original image
+        //show original image oooo
         char RawImgContainer[] = "Raw-Image";
         imshow(RawImgContainer,rawImg);
         moveWindow(RawImgContainer,0,0);
