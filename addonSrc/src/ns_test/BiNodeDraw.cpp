@@ -12,35 +12,34 @@ namespace ns_test{
 
     void BiNodeDraw::DrawNode(Point &parentPos){
          Scalar borderColor(100,100,100);
-         int fontScale =1;
-         int fontThickness =1;
          //parent
          Point pLeft = parentPos;
          Point pRight(pLeft.x+this->labelWidth,pLeft.y + this->labelHeight);
          rectangle(*bmg,pLeft,pRight,borderColor,this->borderWidth);
-         Point pTextCenter(pLeft.x,pLeft.y+this->labelHeight);
-         //putText(*bmg,"Parent",pTextCenter,CV_FONT_HERSHEY_SIMPLEX,fontScale,borderColor,
-         //fontThickness,8);
-        this->DrawText(pTextCenter,"ppp");
+         Point pTextBottomLeft(pLeft.x,pRight.y);
+         this->DrawText(pTextBottomLeft,"ppp");
 
          //left child
          Point lcLeft(pLeft.x - (this->labelWidth/2 + this->child2childInterval/2) ,pLeft.y + this->labelHeight + this->parent2childInterval);
          Point lcRight(lcLeft.x+this->labelWidth, lcLeft.y + this->labelHeight);
          rectangle(*bmg,lcLeft,lcRight,borderColor,this->borderWidth);
-
+         Point lcTextBottomLeft(lcLeft.x,lcRight.y);
+         this->DrawText(lcTextBottomLeft,"lc");
          //right child
          Point rcLeft(pLeft.x + (this->labelWidth/2 + this->child2childInterval/2),pLeft.y + this->labelHeight + this->parent2childInterval);
          Point rcRight(rcLeft.x+this->labelWidth,rcLeft.y+this->labelHeight);
          rectangle(*bmg,rcLeft,rcRight,borderColor,this->borderWidth);
-
+         Point rcTextBottomLeft(rcLeft.x,rcRight.y);
+         this->DrawText(rcTextBottomLeft,"rc");
+         
          imshow(this->winName,*bmg);
-         waitKey(100);
+         waitKey(0);
     }
 
     void BiNodeDraw::DrawText(Point &pt,char text[]){
-        int fontScale =1;
+        double fontScale = 1;
         int fontThickness =1;
-        putText(*bmg,text,pt,CV_FONT_HERSHEY_SIMPLEX,fontScale,Scalar::all(100),
+        putText(*bmg,text,pt,CV_FONT_NORMAL,fontScale,Scalar::all(100),
         fontThickness,8);
     }
 
