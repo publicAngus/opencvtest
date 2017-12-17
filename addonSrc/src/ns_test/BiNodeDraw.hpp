@@ -6,10 +6,13 @@
 namespace ns_test{
     class BiNodeDraw{
     private:
-        const char *winName;
+        char *winName;
         cv::Mat *bmg;
+        int labelWidth,labelHeight,parent2childInterval=30,child2childInterval=20,borderWidth=2,nodeMargin=borderWidth;
     public:
-        BiNodeDraw(const char winName[]);
-        void DrawNode(cv::Point parentPos);
+        BiNodeDraw(char winName[],int width,int height,int labelWidth,int labelHeight);
+        void DrawNode(cv::Point &parentPos);
+        int GetNodeWidth();
+        void DrawText(cv::Point &pt,char text[]);
     };
 }

@@ -78,8 +78,16 @@ int main(int i,char* args[]){
    }
 
 
-   BiNodeDraw bnd("helloworld");
+   int labelWidth = 80;
+   int labelHeight = 20;
+   BiNodeDraw bnd("helloworld",800,800,labelWidth,labelHeight);
 
+   for(int i=1;i<5;i++){
+       cv::Point ptn(i*bnd.GetNodeWidth(),100);
+       bnd.DrawNode(ptn);
+   }
+
+    //std::cout << bnd.GetNodeWidth() << std::endl;
     //std::cout<< bn.Lc->Data << bn.Rc->Data << std::endl;
 
     //int arr[] = {1,2,3};
