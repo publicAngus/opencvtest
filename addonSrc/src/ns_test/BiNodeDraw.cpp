@@ -10,7 +10,8 @@ namespace ns_test{
         moveWindow(this->winName, 0,0);
     }
 
-    void BiNodeDraw::DrawNode(Point &parentPos){
+    /*
+    void BiNodeDraw::DrawNode<T>(Point &parentPos,BiNode<T> *bNode){
          Scalar borderColor(100,100,100);
          //parent
          Point pLeft = parentPos;
@@ -35,7 +36,8 @@ namespace ns_test{
          imshow(this->winName,*bmg);
          waitKey(0);
     }
-
+    */
+    
     void BiNodeDraw::DrawText(Point &pt,char text[]){
         double fontScale = 1;
         int fontThickness =1;

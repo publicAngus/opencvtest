@@ -1,4 +1,6 @@
 #define BiNodePos(T) BiNode<T>*
+#ifndef ns_test_BiNode
+#define ns_test_BiNode
 namespace ns_test{
 
     template<typename T> struct BiNode{
@@ -27,3 +29,4 @@ namespace ns_test{
     }
 
 }
+#endif
