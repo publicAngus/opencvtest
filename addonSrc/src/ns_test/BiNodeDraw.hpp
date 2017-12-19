@@ -12,33 +12,43 @@ namespace ns_test{
         int labelWidth,labelHeight,parent2childInterval=30,child2childInterval=20,borderWidth=2,nodeMargin=borderWidth;
     public:
         BiNodeDraw(char winName[],int width,int height,int labelWidth,int labelHeight);
-        
-        template<typename T> void DrawNode(cv::Point &parentPos,BiNode<T> *bNode){
-              Scalar borderColor(100,100,100);
+        int GetNodeWidth();
+        void DrawText(cv::Point &pt,const char text[]);
+        void DrawText(cv::Point &pt,int intVal);
+        void ReleaseWindow();
+
+        template<typename T> void DrawNode(cv::Point &parentPos,BiNode<T> *bNode,int waitTime){
+         if(!bNode) return;
+
+         Scalar borderColor(100,100,100);
          //parent
          Point pLeft = parentPos;
          Point pRight(pLeft.x+this->labelWidth,pLeft.y + this->labelHeight);
          rectangle(*bmg,pLeft,pRight,borderColor,this->borderWidth);
          Point pTextBottomLeft(pLeft.x,pRight.y);
-         this->DrawText(pTextBottomLeft,"ppp");
+         this->DrawText(pTextBottomLeft,bNode->Data);
 
          //left child
+         if(bNode->Lc){
          Point lcLeft(pLeft.x - (this->labelWidth/2 + this->child2childInterval/2) ,pLeft.y + this->labelHeight + this->parent2childInterval);
          Point lcRight(lcLeft.x+this->labelWidth, lcLeft.y + this->labelHeight);
          rectangle(*bmg,lcLeft,lcRight,borderColor,this->borderWidth);
          Point lcTextBottomLeft(lcLeft.x,lcRight.y);
-         this->DrawText(lcTextBottomLeft,"lc");
+         this->DrawText(lcTextBottomLeft,bNode->Lc->Data);
+         }
+         
          //right child
+         if(bNode->Rc){
          Point rcLeft(pLeft.x + (this->labelWidth/2 + this->child2childInterval/2),pLeft.y + this->labelHeight + this->parent2childInterval);
          Point rcRight(rcLeft.x+this->labelWidth,rcLeft.y+this->labelHeight);
          rectangle(*bmg,rcLeft,rcRight,borderColor,this->borderWidth);
          Point rcTextBottomLeft(rcLeft.x,rcRight.y);
-         this->DrawText(rcTextBottomLeft,"rc");
-         
+         this->DrawText(rcTextBottomLeft,bNode->Rc->Data);
+         }
+
          imshow(this->winName,*bmg);
-         waitKey(0);
+         waitKey(waitTime);
         };
-        int GetNodeWidth();
-        void DrawText(cv::Point &pt,char text[]);
+       
     };
 }

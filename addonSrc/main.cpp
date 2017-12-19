@@ -82,10 +82,16 @@ int main(int i,char* args[]){
    int labelHeight = 20;
    BiNodeDraw bnd("helloworld",1000,800,labelWidth,labelHeight);
      BiNode<int> bnode(101);
-   for(int i=1;i<5;i++){
+     bnode.InsertLC(200);
+     bnode.InsertRC(400);
+     
+   int counter = 5;
+   for(int i=1;i<counter;i++){
        cv::Point ptn(i*bnd.GetNodeWidth(),100);
-       bnd.DrawNode(ptn,&bnode);
+       bnd.DrawNode(ptn,&bnode, i== counter -1 ?0:100);
    }
+
+   bnd.ReleaseWindow();
 
     //std::cout << bnd.GetNodeWidth() << std::endl;
     //std::cout<< bn.Lc->Data << bn.Rc->Data << std::endl;
