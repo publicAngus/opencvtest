@@ -85,10 +85,10 @@ int main(int i,char* args[]){
      bnode.InsertLC(200);
      bnode.InsertRC(400);
      
-   int counter = 5;
+   int counter = 2;
    for(int i=1;i<counter;i++){
-       cv::Point ptn(i*bnd.GetNodeWidth(),100);
-       bnd.DrawNode(ptn,&bnode, i== counter -1 ?0:100);
+       cv::Point ptn(400,0);
+       bnd.DrawNode(ptn,4,&bnode, i== counter -1 ?0:100);
    }
 
    bnd.ReleaseWindow();

@@ -17,7 +17,7 @@ namespace ns_test{
         void DrawText(cv::Point &pt,int intVal);
         void ReleaseWindow();
 
-        template<typename T> void DrawNode(cv::Point &parentPos,BiNode<T> *bNode,int waitTime){
+        template<typename T> void DrawNode(cv::Point &parentPos,int p2cXYInterval, BiNode<T> *bNode,int waitTime){
          if(!bNode) return;
 
          Scalar borderColor(100,100,100);
@@ -28,22 +28,32 @@ namespace ns_test{
          Point pTextBottomLeft(pLeft.x,pRight.y);
          this->DrawText(pTextBottomLeft,bNode->Data);
 
+
+        double shiftX = p2cXYInterval*this->labelWidth;
+        double shiftY = p2cXYInterval*this->labelHeight;
          //left child
          if(bNode->Lc){
-         Point lcLeft(pLeft.x - (this->labelWidth/2 + this->child2childInterval/2) ,pLeft.y + this->labelHeight + this->parent2childInterval);
-         Point lcRight(lcLeft.x+this->labelWidth, lcLeft.y + this->labelHeight);
-         rectangle(*bmg,lcLeft,lcRight,borderColor,this->borderWidth);
-         Point lcTextBottomLeft(lcLeft.x,lcRight.y);
-         this->DrawText(lcTextBottomLeft,bNode->Lc->Data);
+            
+            Point lcLeft(pLeft.x - shiftX ,pLeft.y + this->labelHeight + shiftY);
+            Point lcRight(lcLeft.x+this->labelWidth, lcLeft.y + this->labelHeight);
+            rectangle(*bmg,lcLeft,lcRight,borderColor,this->borderWidth);
+            Point lcTextBottomLeft(lcLeft.x,lcRight.y);
+            this->DrawText(lcTextBottomLeft,bNode->Lc->Data);
+            line(*bmg,Point(lcRight.x,lcRight.y- this->labelHeight),Point(pLeft.x,pLeft.y+this->labelHeight),borderColor,1);
+
+            //bNode->LcPoint = new Point(lcLeft.x,lcLeft.y);
          }
          
          //right child
          if(bNode->Rc){
-         Point rcLeft(pLeft.x + (this->labelWidth/2 + this->child2childInterval/2),pLeft.y + this->labelHeight + this->parent2childInterval);
-         Point rcRight(rcLeft.x+this->labelWidth,rcLeft.y+this->labelHeight);
-         rectangle(*bmg,rcLeft,rcRight,borderColor,this->borderWidth);
-         Point rcTextBottomLeft(rcLeft.x,rcRight.y);
-         this->DrawText(rcTextBottomLeft,bNode->Rc->Data);
+            
+            Point rcLeft(pLeft.x + shiftX,pLeft.y + this->labelHeight + shiftY);
+            Point rcRight(rcLeft.x+this->labelWidth,rcLeft.y+this->labelHeight);
+            rectangle(*bmg,rcLeft,rcRight,borderColor,this->borderWidth);
+            Point rcTextBottomLeft(rcLeft.x,rcRight.y);
+            this->DrawText(rcTextBottomLeft,bNode->Rc->Data);
+            line(*bmg,rcLeft,pRight,borderColor,1);
+            //bNode->RcPoint = new Point(rcLeft.x,rcLeft.y);
          }
 
          imshow(this->winName,*bmg);
