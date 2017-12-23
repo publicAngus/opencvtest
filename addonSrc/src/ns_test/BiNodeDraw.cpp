@@ -10,6 +10,20 @@ namespace ns_test{
         moveWindow(this->winName, 0,0);
     }
 
+    Point BiNodeDraw::GetLcPointFromParent(Point parentPointLeft, int xShiftScale,int yShiftScale){
+          int shiftX = xShiftScale*this->labelWidth;
+          int shiftY = yShiftScale*this->labelHeight;
+          Point lcLeft(parentPointLeft.x - shiftX ,parentPointLeft.y + this->labelHeight + shiftY);
+          return lcLeft;
+    }
+
+    Point BiNodeDraw::GetRcPointFromParent(Point parentPointLeft, int xShiftScale,int yShiftScale){
+          int shiftX = xShiftScale*this->labelWidth;
+          int shiftY = yShiftScale*this->labelHeight;
+          Point rcLeft(parentPointLeft.x + shiftX,parentPointLeft.y + this->labelHeight + shiftY);
+          return rcLeft;
+    }
+
     void BiNodeDraw::DrawText(cv::Point &pt,int intVal){
         this->DrawText(pt,std::to_string(intVal).c_str());
     }

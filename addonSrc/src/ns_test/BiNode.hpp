@@ -13,7 +13,7 @@ namespace ns_test{
 
         BiNodePos(T) InsertLC(T const&);
         BiNodePos(T) InsertRC(T const&);
-        //cv::Point *ParentPoint,*LcPoint,*RcPoint;
+        cv::Point *ParentPoint,*LcPoint,*RcPoint;
     };
 
 

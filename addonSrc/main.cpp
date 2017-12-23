@@ -85,11 +85,15 @@ int main(int i,char* args[]){
      bnode.InsertLC(200);
      bnode.InsertRC(400);
      
-   int counter = 2;
-   for(int i=1;i<counter;i++){
-       cv::Point ptn(400,0);
-       bnd.DrawNode(ptn,4,&bnode, i== counter -1 ?0:100);
+   cv::Point ptn(0,0);
+   int counter = 3;
+   for(int i=0;i<counter;i++){
+       cv::Point pt = i == 0? ptn: *(bnode.RcPoint);
+       pt = bnd.GetRcPointFromParent(pt,2,2);
+       bnd.DrawNode(pt,2,&bnode, i== counter -1 ?0:100);
    }
+
+
 
    bnd.ReleaseWindow();
 
