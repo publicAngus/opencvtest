@@ -35,8 +35,16 @@ namespace ns_test{
         fontThickness,8);
     }
 
+    cv::Point BiNodeDraw::GetLabelBottomRight(cv::Point topLeft){
+         return Point(topLeft.x+this->labelWidth, topLeft.y + this->labelHeight);
+    }
+
     int BiNodeDraw::GetNodeWidth(){
         return this->child2childInterval+this->labelWidth*2+(this->nodeMargin)*2;
+    }
+
+    void BiNodeDraw::DrawLine(cv::Point pt1,cv::Point pt2){
+        line(*bmg,pt1,pt2,Scalar::all(100),1);
     }
 
     void BiNodeDraw::ReleaseWindow(){

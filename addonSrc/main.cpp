@@ -66,98 +66,40 @@ int main(int i,char* args[]){
 
         bnd->InsertLC(i*100+1);
         bnd->InsertRC(i*100+2);
-
-        //this is problematic,all become the last one
-        //BiNode<int> bnd(i);
+    
+        //this is problematic,all become the last one becoz the address is the same
+        //BiNode<int> bndtest(i);
+        //printf("address1 == %p, address2 == %p\n",bnd,&bndtest);
         //nodes.push_back(&bnd);
 
    }
   
    for(std::vector<BiNode<int>*>::iterator it= nodes.begin(); it!=nodes.end();it++){
-       paintNode(*it);
+       //paintNode(*it);
    }
 
 
-   int labelWidth = 80;
+   int labelWidth = 40;
    int labelHeight = 20;
-   BiNodeDraw bnd("helloworld",1000,800,labelWidth,labelHeight);
+   BiNodeDraw bnd("helloworld",2000,1000,labelWidth,labelHeight);
      BiNode<int> bnode(101);
      bnode.InsertLC(200);
      bnode.InsertRC(400);
      
    cv::Point ptn(0,0);
    int counter = 3;
+   int intervalScale = 1;
    for(int i=0;i<counter;i++){
+       intervalScale = pow(2,(counter-i -1));
        cv::Point pt = i == 0? ptn: *(bnode.RcPoint);
-       pt = bnd.GetRcPointFromParent(pt,2,2);
-       bnd.DrawNode(pt,2,&bnode, i== counter -1 ?0:100);
+
+       cv::Point newPt = bnd.GetRcPointFromParent(pt,intervalScale,intervalScale);
+       bnd.DrawNode(newPt,intervalScale,&bnode, i== counter -1 ?0:100);
+
    }
 
-
-
    bnd.ReleaseWindow();
-
-    //std::cout << bnd.GetNodeWidth() << std::endl;
-    //std::cout<< bn.Lc->Data << bn.Rc->Data << std::endl;
-
-    //int arr[] = {1,2,3};
-    //int length = sizeof(arr)/sizeof(int);
-    //ns_test::writeline(length);
-    //ns_test::writeline(sizeof(arr));
-    //ns_test::writeline(sizeof(int));
-    /*
-    BiNode<int> bn(10);
-    std::cout << bn.Data <<std::endl;
-
-    BiNode<int>* lcPtr = bn.InsertLC(20);
-    std::cout << lcPtr->Data << std::endl;
-
-    BiNode<int>* rcPtr = bn.InsertRC(30);
-    std::cout << rcPtr->Data << std::endl;
-    */
-
-
-    //testmetods(); 
-    //Basics::TestWhile(10);
-    //Basics::TestFor(10);
-    //Basics::TestArray(100);
-    //Basics::TestVector(1);
-    //Basics::TestOperatorPole();
-    //Basics::TestBinaryShift();
-    //testmetods();
-    //testSharePointer();
-    //testopencv();
-
-    /*
-    typedef int* intPtr;
-    int ii = 1001;
-    intPtr ptr = &ii;
-    std::cout << *ptr <<std::endl;
-
-    int q = 10;
-    int qRet = macroTest(q);
-    std::cout << qRet << std::endl;
-
-    Basics bsc;
-    Basics bsc2;
-
-    bool ret = bsc ==bsc2;
-    std::cout << ret << std::endl;
-    */
-
-    //Ocv::DrawFrameTest();
-    //Ocv::ReadPixels();
-    //Algor::TestBubbleSort();
-    //Algor::TestQuickSort();
-    //Algor::TestBinarySearch();
   
-    
-    //char str[] = "./imgs/color1.bmp";
-    //OcvT1 t1(str);
-    //t1.Test();
-    
-    
-    
 
     writeline("done testing");
     std::getchar();

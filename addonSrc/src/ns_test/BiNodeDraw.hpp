@@ -15,6 +15,8 @@ namespace ns_test{
         int GetNodeWidth();
         void DrawText(cv::Point &pt,const char text[]);
         void DrawText(cv::Point &pt,int intVal);
+        void DrawLine(cv::Point pt1,cv::Point pt2);
+        cv::Point GetLabelBottomRight(cv::Point topLeft);
         void ReleaseWindow();
         Point GetLcPointFromParent(Point parentPoint, int xShiftScale,int yShiftScale);
         Point GetRcPointFromParent(Point parentPoint, int xShiftScale,int yShiftScale);
@@ -30,15 +32,11 @@ namespace ns_test{
          Point pTextBottomLeft(pLeft.x,pRight.y);
          this->DrawText(pTextBottomLeft,bNode->Data);
 
-
-        //double shiftX = p2cXYInterval*this->labelWidth;
-        //double shiftY = p2cXYInterval*this->labelHeight;
          //left child
          if(bNode->Lc){
-            
-            //Point lcLeft(pLeft.x - shiftX ,pLeft.y + this->labelHeight + shiftY);
+
             Point lcLeft = GetLcPointFromParent(pLeft,p2cXYInterval,p2cXYInterval);
-            Point lcRight(lcLeft.x+this->labelWidth, lcLeft.y + this->labelHeight);
+            Point lcRight = GetLabelBottomRight(lcLeft); //(lcLeft.x+this->labelWidth, lcLeft.y + this->labelHeight);
             rectangle(*bmg,lcLeft,lcRight,borderColor,this->borderWidth);
             Point lcTextBottomLeft(lcLeft.x,lcRight.y);
             this->DrawText(lcTextBottomLeft,bNode->Lc->Data);
@@ -50,14 +48,14 @@ namespace ns_test{
          //right child
          if(bNode->Rc){
             
-            //Point rcLeft(pLeft.x + shiftX,pLeft.y + this->labelHeight + shiftY);
             Point rcLeft = GetRcPointFromParent(pLeft,p2cXYInterval,p2cXYInterval);
-            Point rcRight(rcLeft.x+this->labelWidth,rcLeft.y+this->labelHeight);
+            Point rcRight = GetLabelBottomRight(rcLeft); //(rcLeft.x+this->labelWidth,rcLeft.y+this->labelHeight);
             rectangle(*bmg,rcLeft,rcRight,borderColor,this->borderWidth);
             Point rcTextBottomLeft(rcLeft.x,rcRight.y);
             this->DrawText(rcTextBottomLeft,bNode->Rc->Data);
             line(*bmg,rcLeft,pRight,borderColor,1);
             bNode->RcPoint = new Point(rcLeft.x,rcLeft.y);
+
          }
 
          imshow(this->winName,*bmg);
