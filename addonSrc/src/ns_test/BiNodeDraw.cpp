@@ -11,14 +11,14 @@ namespace ns_test{
     }
 
     Point BiNodeDraw::GetLcPointFromParent(Point parentPointLeft, int xShiftScale,int yShiftScale){
-          int shiftX = xShiftScale*this->labelWidth;
+          int shiftX = (xShiftScale+1)*this->labelWidth;
           int shiftY = yShiftScale*this->labelHeight;
           Point lcLeft(parentPointLeft.x - shiftX ,parentPointLeft.y + this->labelHeight + shiftY);
           return lcLeft;
     }
 
     Point BiNodeDraw::GetRcPointFromParent(Point parentPointLeft, int xShiftScale,int yShiftScale){
-          int shiftX = xShiftScale*this->labelWidth;
+          int shiftX = (xShiftScale+1)*this->labelWidth;
           int shiftY = yShiftScale*this->labelHeight;
           Point rcLeft(parentPointLeft.x + shiftX,parentPointLeft.y + this->labelHeight + shiftY);
           return rcLeft;
@@ -29,6 +29,7 @@ namespace ns_test{
     }
 
     void BiNodeDraw::DrawText(Point &pt,const char text[]){
+        return;
         double fontScale = 1;
         int fontThickness =1;
         putText(*bmg,text,pt,CV_FONT_NORMAL,fontScale,Scalar::all(100),

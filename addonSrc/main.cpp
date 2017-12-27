@@ -79,23 +79,29 @@ int main(int i,char* args[]){
    }
 
 
-   int labelWidth = 40;
+   int labelWidth = 20;
    int labelHeight = 20;
    BiNodeDraw bnd("helloworld",2000,1000,labelWidth,labelHeight);
      BiNode<int> bnode(101);
      bnode.InsertLC(200);
      bnode.InsertRC(400);
      
-   cv::Point ptn(0,0);
-   int counter = 3;
-   int intervalScale = 1;
+   cv::Point ptn(400,0);
+   cv::Point *nodePt;
+   nodePt = &ptn;
+   int counter = 5;
+   int nodeInterval = 1;
+   int nextNodeInterval = 0;
    for(int i=0;i<counter;i++){
-       intervalScale = pow(2,(counter-i -1));
-       cv::Point pt = i == 0? ptn: *(bnode.RcPoint);
-
-       cv::Point newPt = bnd.GetRcPointFromParent(pt,intervalScale,intervalScale);
-       bnd.DrawNode(newPt,intervalScale,&bnode, i== counter -1 ?0:100);
-
+       nodeInterval = 3*pow(2,(counter -i - 3)) -1;
+       if(nodeInterval <= 1) nodeInterval = 1;
+       std::cout << "nodeInterval:" << nodeInterval << std::endl;
+       bnd.DrawNode(*nodePt,nodeInterval,&bnode, i == counter -1?0:100);
+       //std::cout <<"enter nextNodeInterval:" << std::endl; std::cin >> nextNodeInterval;
+       //nextNodeInterval = nodeInterval;
+       //cv::Point nextRightNode = bnd.GetRcPointFromParent(*(bnode.RcPoint),nextNodeInterval,nextNodeInterval);
+       //nodePt = &nextRightNode;
+       nodePt  = bnode.RcPoint;
    }
 
    bnd.ReleaseWindow();
